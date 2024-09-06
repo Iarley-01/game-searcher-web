@@ -21,8 +21,9 @@ function pesquisar() {
   for (let jogo of jogos) {
     titulo = jogo.titulo.toLowerCase();
     descricao = jogo.descricao.toLowerCase();
+    tags = jogo.tags.toLowerCase();
     
-    if (titulo.includes(termoDePesquisa.toLowerCase()) || descricao.includes(termoDePesquisa.toLowerCase())) {
+    if (titulo.includes(termoDePesquisa.toLowerCase()) || descricao.includes(termoDePesquisa.toLowerCase()) || tags.includes(termoDePesquisa.toLowerCase())) {
       resultados += `
       <div class="item-resultado">
         <h2>${jogo.titulo}</h2>
