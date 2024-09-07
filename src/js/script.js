@@ -12,7 +12,9 @@ function pesquisar() {
   let descricao = "";
   let tags = "";
   
-  if (termoDePesquisa == "" || termoDePesquisa.includes(" ")) {
+  console.log(termoDePesquisa.toLowerCase())
+  
+  if (!termoDePesquisa) {
     containerResultados.innerHTML = `<h2 class="mensagem-aviso">Nada foi encontrado, digite um termo válido!</h2>`;
     return;
   }
@@ -23,12 +25,19 @@ function pesquisar() {
     descricao = jogo.descricao.toLowerCase();
     tags = jogo.tags.toLowerCase();
     
+    console.log(titulo == termoDePesquisa.toLowerCase())
+    
     if (titulo.includes(termoDePesquisa.toLowerCase()) || descricao.includes(termoDePesquisa.toLowerCase()) || tags.includes(termoDePesquisa.toLowerCase())) {
       resultados += `
       <div class="item-resultado">
-        <h2>${jogo.titulo}</h2>
-        <p class="descricao-meta">${jogo.descricao}</p>
-        <a href="${jogo.linkInfo}" target="_blank">Mais Informações</a>
+        <div class="card-imagem">
+          <img src="${jogo.linkCapa}" alt="${jogo.titulo}">
+        </div>
+        <div>
+          <h2>${jogo.titulo}</h2>
+          <p class="descricao-meta">${jogo.descricao}</p>
+          <a href="${jogo.linkInfo}" target="_blank">Mais Informações</a>
+        </div>
       </div>
     `;
     if (!resultados) {
